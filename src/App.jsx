@@ -216,11 +216,7 @@ export default function App() {
       <header className="header">
         <div className="header-inner">
           <div className="logo-area">
-            <div className="logo-icon">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 12V22H4V12M22 7H2V12H22V7ZM12 22V7M12 7H7.5C6.12 7 5 5.88 5 4.5S6.12 2 7.5 2C9.56 2 12 4.5 12 4.5C12 4.5 14.44 2 16.5 2C17.88 2 19 3.12 19 4.5S17.88 7 16.5 7H12Z"/>
-              </svg>
-            </div>
+            <img src="/O9pNI9t7_400x400-removebg-preview.png" alt="Blair GradTics logo" className="logo-img" />
             <span className="logo-text">Blair Grad<span>Tics</span></span>
           </div>
           <button className="add-btn" onClick={() => setShowModal(true)} aria-label="Post a listing">
