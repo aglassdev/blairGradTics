@@ -186,15 +186,6 @@
   letter-spacing: -0.2px;
 }
 
-.price-badge {
-  background: var(--green-bg);
-  color: var(--green-text);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
 
 .tickets-count {
   font-size: 13px;

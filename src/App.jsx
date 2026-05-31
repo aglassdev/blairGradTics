@@ -179,10 +179,9 @@ function ListingCard({ listing }) {
     <div className="card">
       <div className="card-header">
         <span className="seller-name">{sellerName}</span>
-        <span className="price-badge">${pricePerTicket % 1 === 0 ? pricePerTicket : pricePerTicket.toFixed(2)}/ticket</span>
       </div>
       <p className="tickets-count">
-        <strong>{ticketsAvailable}</strong> ticket{ticketsAvailable !== 1 ? 's' : ''} available
+        <strong>{ticketsAvailable}</strong> ticket{ticketsAvailable !== 1 ? 's' : ''} available &middot; <strong>${pricePerTicket % 1 === 0 ? pricePerTicket : pricePerTicket.toFixed(2)}</strong>/ticket
       </p>
       <div className="divider" />
       <div className="contact-list">
