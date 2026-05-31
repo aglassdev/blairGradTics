@@ -84,7 +84,7 @@ function AddModal({ onClose, onAdded }) {
               <label>Price / Ticket *</label>
               <input
                 type="number"
-                placeholder="25"
+                placeholder="5"
                 min="0"
                 step="0.01"
                 value={form.pricePerTicket}
@@ -201,6 +201,13 @@ export default function App() {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [dark, setDark] = useState(() =>
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+  );
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  }, [dark]);
 
   useEffect(() => {
     databases.listDocuments(DB_ID, COL_ID, [Query.orderDesc('$createdAt')])
@@ -219,12 +226,30 @@ export default function App() {
             <img src="/O9pNI9t7_400x400-removebg-preview.png" alt="Blair GradTics logo" className="logo-img" />
             <span className="logo-text">Blair Grad<span>Tics</span></span>
           </div>
-          <button className="add-btn" onClick={() => setShowModal(true)} aria-label="Post a listing">
-            <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="12" y1="5" x2="12" y2="19"/>
-              <line x1="5" y1="12" x2="19" y2="12"/>
-            </svg>
-          </button>
+          <div className="header-actions">
+            <button className="add-btn" onClick={() => setShowModal(true)}>
+              <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              Sell Tickets
+            </button>
+            <button className="theme-btn" onClick={() => setDark(d => !d)} aria-label="Toggle theme">
+              {dark ? (
+                <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"/>
+                  <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                  <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </header>
 
