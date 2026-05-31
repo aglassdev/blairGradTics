@@ -141,7 +141,10 @@ function AddModal({ onClose, onAdded }) {
 }
 
 function ListingCard({ listing }) {
-  const { sellerName, instagram, phone, email, ticketsAvailable, pricePerTicket } = listing;
+  const { sellerName, instagram, phone, email, ticketsAvailable, pricePerTicket, $createdAt } = listing;
+  const posted = new Date($createdAt).toLocaleString('en-US', {
+    month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
+  });
   const contacts = [
     instagram && {
       icon: (
@@ -179,6 +182,7 @@ function ListingCard({ listing }) {
     <div className="card">
       <div className="card-header">
         <span className="seller-name">{sellerName}</span>
+        <span className="posted-time">{posted}</span>
       </div>
       <p className="tickets-count">
         <strong>{ticketsAvailable}</strong> ticket{ticketsAvailable !== 1 ? 's' : ''} available &middot; <strong>${pricePerTicket % 1 === 0 ? pricePerTicket : pricePerTicket.toFixed(2)}</strong> per ticket
